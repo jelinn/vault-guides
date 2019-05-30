@@ -85,7 +85,6 @@ module "vault_aws" {
   vpc_id        = "${module.network_aws.vpc_id}"
   vpc_cidr      = "${module.network_aws.vpc_cidr}"
   subnet_ids    = "${split(",", var.vault_public ? join(",", module.network_aws.subnet_public_ids) : join(",", module.network_aws.subnet_private_ids))}"
-  server_count= "${var.vault_servers}"
   instance_type = "${var.vault_instance}"
   image_id      = "${var.vault_image_id != "" ? var.vault_image_id : data.aws_ami.base.id}"
   public        = "${var.vault_public}"
